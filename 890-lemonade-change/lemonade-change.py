@@ -1,23 +1,23 @@
 class Solution(object):
     def lemonadeChange(self, bills):
-        my_dict = {5: 0, 10: 0, 20: 0}
-        for i in range(len(bills)):
-            if bills[i]==5:
-                my_dict[5]+=1
-            if bills[i]==10:
-                if my_dict[5]>0:
-                    my_dict[5]-=1
-                    my_dict[bills[i]]+=1
-                else:
-                    return False
-
-            if bills[i]==20:
-                if my_dict[5]>0 and my_dict[10]>0:
-                    my_dict[10]-=1
-                    my_dict[5]-=1
-                elif my_dict[5]>2:
-                    my_dict[5]-=3
-                else:
-                    return False
-        return True
+        five = 0
+        ten = 0
         
+        for bill in bills:
+            if bill == 5:
+                five += 1
+            elif bill == 10:
+                if five == 0:
+                    return False
+                five -= 1
+                ten += 1
+            else:
+                if ten > 0 and five > 0:
+                    ten -= 1
+                    five -= 1
+                elif five >= 3:
+                    five -= 3
+                else:
+                    return False
+        
+        return True
