@@ -1,9 +1,15 @@
 class Solution(object):
     def twoSum(self, nums, target):
-        numToIndex = {}
-        for i in range(len(nums)):
-            if target - nums[i] in numToIndex:
-                return [numToIndex[target - nums[i]], i]
-            numToIndex[nums[i]] = i
-        return []
+        # Dictionary to store value -> index
+        seen = {}
         
+        for i, num in enumerate(nums):
+            complement = target - num
+            
+            # Check if complement exists in our dictionary
+            if complement in seen:
+                return [seen[complement], i]
+            
+            # Store current number and its index
+            seen[num] = i
+ 
