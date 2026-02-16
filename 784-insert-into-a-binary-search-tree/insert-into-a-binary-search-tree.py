@@ -1,17 +1,10 @@
+
 class Solution(object):
     def insertIntoBST(self, root, val):
-        temp=root
         if root is None:
             return TreeNode(val)
-        while True:
-            if val < root.val:
-                if root.left is None:
-                    root.left=TreeNode(val)
-                    break
-                root=root.left
-            if val > root.val:
-                if root.right is None:
-                    root.right=TreeNode(val)
-                    break
-                root=root.right
-        return temp
+        if val < root.val:
+            root.left = self.insertIntoBST(root.left, val)
+        else:
+            root.right = self.insertIntoBST(root.right, val)
+        return root
