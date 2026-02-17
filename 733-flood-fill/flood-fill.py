@@ -14,8 +14,6 @@ class Solution(object):
 
 
         while len(queue) != 0:
-            new_colour = len(queue)
-            for _ in range(new_colour):
                 i, j = queue.popleft()
                 for dx, dy in [(0,1), (1,0), (-1,0), (0,-1)]:
                     ni,nj = i+dx , j+dy
