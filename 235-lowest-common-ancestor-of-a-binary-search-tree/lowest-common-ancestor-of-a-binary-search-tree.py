@@ -1,12 +1,11 @@
 class Solution(object):
     def lowestCommonAncestor(self, root, p, q):
-        curr =root
         while True:
-            if q.val>curr.val and p.val>curr.val:
-                curr=curr.right
-            elif q.val<curr.val and p.val<curr.val:
-                curr=curr.left  
+            if q.val>root.val and p.val>root.val:
+                root=root.right
+            elif q.val<root.val and p.val<root.val:
+                root=root.left  
             else:
-                return curr
+                return root
         return -1
         
