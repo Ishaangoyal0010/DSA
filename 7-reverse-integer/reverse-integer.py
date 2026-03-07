@@ -1,6 +1,14 @@
 class Solution(object):
-    def reverse(self,x):
+    def reverse(self, x):
         sign = -1 if x < 0 else 1
-        reversed_num = int(str(abs(x))[::-1]) * sign
-        return reversed_num if -2**31 <= reversed_num < 2**31 else 0
+        x = abs(x) 
+        reversed_num = 0
+        while x != 0:
+            digit = x % 10
+            reversed_num = reversed_num * 10 + digit
+            x = x // 10
+        reversed_num = sign * reversed_num
+        if reversed_num < -2**31 or reversed_num > 2**31 - 1:
+            return 0
         
+        return reversed_num
